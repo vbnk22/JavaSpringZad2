@@ -45,7 +45,7 @@ public class User {
     }
 
     public String toCSV(){
-        return login + "," + password + "," + role;
+        return login + ";" + password + ";" + role;
     }
 
     @Override

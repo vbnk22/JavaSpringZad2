@@ -21,6 +21,8 @@ public class Main {
         //System.out.println(vp.getVehicles());
 
         up.addUser(new User("test", "test123", "user"));
+        up.addUser(new User("admin", "admin", "admin"));
+        up.save("C:\\Users\\olesz\\Desktop\\danne\\users.txt");
 
         System.out.println(up.getUsers());
     }
