@@ -87,10 +87,22 @@ public class VehicleRepository implements IVehicleRepository{
     @Override
     public void addVehicle(String type, String brand, String model, int year, double price, boolean rented, String plate, String category){
         if (type.equals("Car")){
-            vehicles.add(new Car(brand, model, year, price, rented, plate));
+            Car car = new Car(brand, model, year, price, rented, plate);
+            for (var v: vehicles){
+                if (v.equals(car)){
+                    return;
+                }
+            }
+            vehicles.add(car);
         }
         else if (type.equals("Motorcycle")){
-            vehicles.add(new Motorcycle(brand, model, year, price, rented, plate, category));
+            Motorcycle motorcycle = new Motorcycle(brand, model, year, price, rented, plate, category);
+            for (var v: vehicles){
+                if (v.equals(motorcycle)){
+                    return;
+                }
+            }
+            vehicles.add(motorcycle);
         }
     }
 
