@@ -83,4 +83,24 @@ public class VehicleRepository implements IVehicleRepository{
     public List<Vehicle> getVehicles() {
         return vehicles;
     }
+
+    @Override
+    public void addVehicle(String type, String brand, String model, int year, double price, boolean rented, String plate, String category){
+        if (type.equals("Car")){
+            vehicles.add(new Car(brand, model, year, price, rented, plate));
+        }
+        else if (type.equals("Motorcycle")){
+            vehicles.add(new Motorcycle(brand, model, year, price, rented, plate, category));
+        }
+    }
+
+    @Override
+    public void removeVehicle(String plate){
+        for (int i = 0; i < vehicles.size(); i++){
+            Vehicle vehicle = vehicles.get(i);
+            if (vehicle.getPlate().equals(plate)){
+                vehicles.remove(vehicle);
+            }
+        }
+    }
 }

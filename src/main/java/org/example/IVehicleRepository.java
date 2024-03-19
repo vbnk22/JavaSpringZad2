@@ -10,5 +10,9 @@ public interface IVehicleRepository {
     List<Vehicle> getVehicles();
 
     void save(String path);
+
+    void addVehicle(String type, String brand, String model, int year, double price, boolean rented, String plate, String category);
+
+    void removeVehicle(String plate);
 }
 
