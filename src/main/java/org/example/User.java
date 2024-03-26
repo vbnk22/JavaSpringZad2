@@ -49,8 +49,8 @@ public class User {
         this.role = role;
     }
 
-    public void setRentedVehicle(String rentedVehicle) {
-        this.rentedPlate = rentedVehicle;
+    public void setRentedPlate(String rentedPlate) {
+        this.rentedPlate = rentedPlate;
     }
 
     public String toCSV(){

@@ -34,6 +34,17 @@ public class App {
                                 System.out.println(vr.getVehicle(user.getRentedPlate()));
                             }
                             break;
+                        case "1":
+                            System.out.println("plate: ");
+                            String line = scanner.nextLine();
+                            vr.rentCar(line);
+                            user.setRentedPlate(line);
+                            break;
+                        case "2":
+                            vr.returnCar(user.getRentedPlate());
+                            user.setRentedPlate("");
+                            System.out.println("Car returned");
+                            break;
                     }
                 } else if (user.getRole().toString().equals("ADMIN")) {
                     System.out.println("000 - show users");
