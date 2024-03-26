@@ -9,5 +9,7 @@ public interface IUserRepository {
 
     public void save(String path);
 
+    void readCSV(String path);
+
     public void addUser(User user);
 }

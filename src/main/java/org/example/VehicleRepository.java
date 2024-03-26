@@ -115,4 +115,14 @@ public class VehicleRepository implements IVehicleRepository{
             }
         }
     }
+
+    @Override
+    public Vehicle getVehicle(String plate){
+        for (Vehicle v: vehicles){
+            if (v.getPlate().equals(plate)){
+                return v;
+            }
+        }
+        return null;
+    }
 }
