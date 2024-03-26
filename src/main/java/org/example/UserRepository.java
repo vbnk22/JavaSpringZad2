@@ -53,6 +53,7 @@ public class UserRepository implements IUserRepository{
 
     public void readCSV(String path) {
         File newFile = new File(path);
+        User user = null;
 
         try {
             Scanner sc = new Scanner(newFile);
@@ -60,8 +61,12 @@ public class UserRepository implements IUserRepository{
             while (sc.hasNextLine()){
                 String line = sc.nextLine();
                 String[] stringUser = line.split(";");
-                User user = new User(stringUser[0], stringUser[1], User.Role.valueOf(stringUser[2]), stringUser[3]);
-
+                if (stringUser.length == 3){
+                    user = new User(stringUser[0], stringUser[1], User.Role.valueOf(stringUser[2]));
+                }
+                else if (stringUser.length == 4){
+                    user = new User(stringUser[0], stringUser[1], User.Role.valueOf(stringUser[2]), stringUser[3]);
+                }
                 users.add(user);
             }
             sc.close();
@@ -73,5 +78,6 @@ public class UserRepository implements IUserRepository{
     @Override
     public void addUser(User user){
         users.add(user);
+        save("C:\\Users\\olesz\\Desktop\\danne\\users.txt");
     }
 }

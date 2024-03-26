@@ -13,6 +13,7 @@ public class VehicleRepository implements IVehicleRepository{
 
     public VehicleRepository(){
         this.vehicles = new ArrayList<>();
+        readCSV("C:\\Users\\olesz\\Desktop\\danne\\dane.txt");
     }
 
     public void readCSV(String path) {
@@ -104,6 +105,7 @@ public class VehicleRepository implements IVehicleRepository{
             }
             vehicles.add(motorcycle);
         }
+        save("C:\\Users\\olesz\\Desktop\\danne\\dane.txt");
     }
 
     @Override
@@ -114,6 +116,7 @@ public class VehicleRepository implements IVehicleRepository{
                 vehicles.remove(vehicle);
             }
         }
+        save("C:\\Users\\olesz\\Desktop\\danne\\dane.txt");
     }
 
     @Override

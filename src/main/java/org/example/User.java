@@ -21,6 +21,12 @@ public class User {
         this.role = Role.USER;
     }
 
+    public User(String login, String password, Role role){
+        this.login = login;
+        this.password = password;
+        this.role = role;
+    }
+
     public String getLogin() {
         return login;
     }
@@ -59,7 +65,7 @@ public class User {
 
     @Override
     public String toString(){
-        return "login: " + login + " haslo: " + password + " rola: " + role + "tablica wypozyczonego samochodu: " + rentedPlate + "\n";
+        return "login: " + login + ", haslo: " + password + ", rola: " + role + ", tablica wypozyczonego samochodu: " + rentedPlate + "\n";
     }
 
     public enum Role {

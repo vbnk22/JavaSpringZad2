@@ -5,7 +5,6 @@ public class Authenticator {
     public static User login(String login, String password){
         UserRepository userRepository = new UserRepository();
         User userFromFile = userRepository.getUser(login);
-        System.out.println(hashPassword("test"));
         if ( hashPassword(password).equals(userFromFile.getPassword()) ) {
             return userFromFile;
         }

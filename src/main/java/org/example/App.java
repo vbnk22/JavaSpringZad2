@@ -30,8 +30,11 @@ public class App {
                     switch (response) {
                         case "00":
                             System.out.println(user);
-                            if (!user.getRentedPlate().isEmpty()){
+                            if (!(user.getRentedPlate() == "null")){
                                 System.out.println(vr.getVehicle(user.getRentedPlate()));
+                            }
+                            else{
+                                System.out.println("Brak wypozyczonego auta");
                             }
                             break;
                         case "1":
@@ -39,6 +42,7 @@ public class App {
                             String line = scanner.nextLine();
                             vr.rentCar(line);
                             user.setRentedPlate(line);
+                            System.out.println("Car rented");
                             break;
                         case "2":
                             vr.returnCar(user.getRentedPlate());
@@ -48,15 +52,38 @@ public class App {
                     }
                 } else if (user.getRole().toString().equals("ADMIN")) {
                     System.out.println("000 - show users");
-                    System.out.println("0 - show cars");
-                    System.out.println("1 - rent car");
-                    System.out.println("2 - return car");
-                    System.out.println("6 - add car");
-                    System.out.println("7 - remove car");
-                    System.out.println("8 - add user");
-                    System.out.println("9 - remove user");
+                    System.out.println("0 - show vehicles");
+                    System.out.println("1 - add vehicle");
+                    System.out.println("2 - remove vehicle");
 
                     response = scanner.nextLine();
+
+                    switch (response){
+                        case "000":
+                            for (User u: ur.getUsers()){
+                                System.out.println(u);
+                                if (!(user.getRentedPlate() == "null")){
+                                    System.out.println(vr.getVehicle(u.getRentedPlate()));
+                                }
+                            }
+                            break;
+                        case "0":
+                            System.out.println(vr.getVehicles());
+                            break;
+                        case "1":
+                            System.out.println("enter vehicle: type;brand;model;year;price;rented;plate;category");
+                            String line = scanner.nextLine();
+                            String[] vehicle = line.split(";");
+                            vr.addVehicle(vehicle[0], vehicle[1], vehicle[2], Integer.parseInt(vehicle[3]), Double.parseDouble(vehicle[4]), Boolean.parseBoolean(vehicle[5]), vehicle[6], vehicle[7]);
+                            System.out.println("Vehicle added");
+                            break;
+                        case "2":
+                            System.out.println("plate:");
+                            String linePlate = scanner.nextLine();
+                            vr.removeVehicle(linePlate);
+                            System.out.println("Car removed");
+                            break;
+                    }
                 }
 
             }
